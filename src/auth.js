@@ -1,6 +1,6 @@
 import React from 'react';
 import { AuthenticatedTemplate, UnauthenticatedTemplate, useMsal } from '@azure/msal-react';
-import { PublicClientApplication } from '@azure/msal-browser';
+import { PublicClientApplication} from '@azure/msal-browser';
 import { App } from './app'
 import './auth.css'
 

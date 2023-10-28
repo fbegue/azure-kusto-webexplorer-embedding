@@ -6,14 +6,22 @@ import {
 } from "@azure/msal-browser";
 import "./app.css";
 
+// let features = "f-IFrameAuth=true&f-PersistAfterEachRun=true&f-Homepage=false&f-ShowPageHeader=false&f-ShowNavigation=false&f-DisableExploreQuery=true"
+let features = "f-IFrameAuth=true&f-PersistAfterEachRun=true&f-Homepage=false&f-ShowPageHeader=false&f-ShowNavigation=false"
+let additionalFeatures = ["f-DisableNewDashboard=true","f-DisableDashboardEditMenu=true","f-DisableDashboardFileMenu=true",
+  "f-DisableDashboardShareMenu=true","f-DisableDashboardDelete=true","f-DisableExploreQuery=true",
+  "f-ShowFileMenu=false","f-ShowShareMenu=false","f-ShowConnectionButtons=false"]
+features = features + "&" + additionalFeatures.join("&");
+
 const iframeConfig = {
   cluster: "adx-cluster-soundfound",
   database: "soundfound-db",
   //features: "f-IFrameAuth=true&f-UseMeControl=false",
-  features:
-  "f-IFrameAuth=true&f-PersistAfterEachRun=true&f-Homepage=false&f-ShowPageHeader=false&f-ShowNavigation=false&f-DisableExploreQuery=false",
+  features: features,
   workspaceName: "kwe-embed-demo",
 };
+
+
 
 /**
  * Map scopes from getToken message to AAD scopes:
