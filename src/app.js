@@ -9,7 +9,9 @@ import "./app.css";
 const iframeConfig = {
   cluster: "adx-cluster-soundfound",
   database: "soundfound-db",
-  features: "f-IFrameAuth=true&f-UseMeControl=false",
+  //features: "f-IFrameAuth=true&f-UseMeControl=false",
+  features:
+  "f-IFrameAuth=true&f-PersistAfterEachRun=true&f-Homepage=false&f-ShowPageHeader=false&f-ShowNavigation=false&f-DisableExploreQuery=false",
   workspaceName: "kwe-embed-demo",
 };
 
@@ -22,6 +24,7 @@ const iframeConfig = {
  *                      'People.Read'
  */
 function mapScope(scope) {
+  //todo: wrong cluster value below, not sure whhat this does
   switch (scope) {
     case "query":
       return ["https://kwetest.eastus.kusto.windows.net/.default"];
@@ -101,10 +104,15 @@ export function App() {
   }, [iframeRef, accounts, inProgress, instance]);
 
   return (
-    <iframe
-      ref={iframeRef}
-      title="adx example"
-      src={`https://dataexplorer.azure.com/clusters/${iframeConfig.cluster}/databases/${iframeConfig.database}?${iframeConfig.features}&workspace=${iframeConfig.workspaceName}`}
-    />
+    // <iframe
+    //   ref={iframeRef}
+    //   title="adx example"
+    //   src={`https://dataexplorer.azure.com/clusters/${iframeConfig.cluster}/databases/${iframeConfig.database}?${iframeConfig.features}&workspace=${iframeConfig.workspaceName}`}
+    // />
+      <iframe
+          ref={iframeRef}
+          title="adx example"
+          src={`https://dataexplorer.azure.com/dashboards?${iframeConfig.features}`}
+      />
   );
 }
